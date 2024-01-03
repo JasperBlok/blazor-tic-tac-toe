@@ -1,0 +1,27 @@
+﻿@page "/"
+@rendermode InteractiveServer
+@using BlazroTicTacToe.Models;
+
+@inject IJSRuntime JsRuntime
+
+<PageTitle>Tic-Tac-Toe</PageTitle>
+
+<h3>Tic-Tac-Toe</h3>
+
+<button class="btn btn-primary disabled">Player vs Player</button>
+<!--<button class="btn btn-primary disabled">Player vs AI</button>-->
+<button class="btn btn-danger" @onclick="_gameLogic.RestartBoard">Restart</button>
+
+<br />
+<br />
+<br />
+<br />
+
+@for (int rowIndex = 0; rowIndex < 3; rowIndex++)
+{
+    for (int colIndex = 0; colIndex < 3; colIndex++)
+    {
+        <CBoardCell Cell="_gameLogic.CurrentBoardData[rowIndex, colIndex]" OnClick="_gameLogic.BoardCellOnClick"/>
+    }
+    <br />
+}
